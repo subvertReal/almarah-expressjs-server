@@ -57,6 +57,28 @@ app.get('/scan/showcase-one',(req, res) => {
     
 });
 
+//?mens Clothing components
+app.get('/scan/shalwar-kameez',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/menClothing/shalwarKameez');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });
+    
+});
+
 
 
 app.listen(port, () => {
