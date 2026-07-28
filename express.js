@@ -78,7 +78,164 @@ app.get('/scan/shalwar-kameez',(req, res) => {
         });
     
 });
+app.get('/scan/waistcoat',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/menClothing/waistcoat');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });
+    
+});
 
+//? groomswear
+app.get('/scan/fancy-kurtas',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/groomswear/fancyKurtas');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });
+    
+});
+app.get('/scan/princecoats',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/groomswear/princecoats');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
+app.get('/scan/sherwanis',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/groomswear/sherwanis');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
+
+//? misc
+app.get('/scan/caps',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/misc/caps');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
+app.get('/scan/footwear',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/misc/footwear');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
+app.get('/scan/shawls',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/misc/shawls');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
+app.get('/scan/turban',(req, res) => {
+  const imagesDir = path.join(__dirname, 'public/misc/turban');
+    fs.readdir(imagesDir, (err, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Unable to read images directory' });
+            }
+            // Filter for image files (webp)
+            const imageFiles = files.filter(file =>
+                /\.(webp)$/i.test(file)
+            );
+            // Read and encode each image as base64
+            const imageScan = imageFiles.map(file => {
+                return {
+                    name: file,
+                };
+            });
+            res.json(imageScan);
+        });    
+});
 
 
 app.listen(port, () => {
