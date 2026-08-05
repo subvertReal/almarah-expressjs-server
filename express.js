@@ -18,7 +18,12 @@ if (!fs.existsSync(dbPath)) {
         price REAL check(price >= 0),
         pic1 TEXT NOT NULL,
         pic2 TEXT,
-        pic3 TEXT
+        pic3 TEXT,
+        sizeSmall INTEGER,
+        sizeMedium INTEGER,
+        sizeLarge INTEGER,
+        sizeXL INTEGER,
+        size2XL INTEGER
 
     )`)
     db.close();
@@ -101,27 +106,21 @@ app.get('/scan/showcase-one',(req, res) => {
     
 });
 
-//?mens Clothing components
-// app.get('/scan/shalwar-kameez',(req, res) => {
-//   const imagesDir = path.join(__dirname, 'public/menClothing/shalwarKameez');
-//     fs.readdir(imagesDir, (err, files) => {
-//             if (err) {
-//                 return res.status(500).json({ error: 'Unable to read images directory' });
-//             }
-//             // Filter for image files (webp)
-//             const imageFiles = files.filter(file =>
-//                 /\.(webp)$/i.test(file)
-//             );
-//             // Read and encode each image as base64
-//             const imageScan = imageFiles.map(file => {
-//                 return {
-//                     name: file,
-//                 };
-//             });
-//             res.json(imageScan);
-//         });
+//?get product info
+// usage http://localhost:3000/products/(put id of product) ie 1
+app.get('/products/api/:id',(req, res) => {
+    let dbPath = path.join(__dirname, 'clothing.db');
+    let db = new Database(dbPath);
+
+    let reqId = req.params.id;
     
-// });
+    const row = db.prepare('SELECT * FROM clothing WHERE id = ?').get(reqId);
+    console.log(row);
+    
+    res.json(row);    
+});
+
+//?mens Clothing components
 app.get('/scan/shalwar-kameez',(req, res) => {
     let dbPath = path.join(__dirname, 'clothing.db');
     let db = new Database(dbPath);
